@@ -1,0 +1,69 @@
+@()
+
+@main("index") {
+<div class="wrapper">
+
+    <div id="intro-text">
+        <h3>Retrouvez lensemble de nos rubriques</h3>
+    </div>
+
+
+    <div class="services-list clearfix">
+        <div class="services-left">
+            <h3><a title="Plan" href="@routes.PlanController.plan()">Plan</a></h3>
+
+            <p>Rendez vous sur
+                <a title="Plan" href="@routes.PlanController.plan()">le plan</a>
+             pour facilement identifier tous les chats perdus et les chats trouvés
+            </p>
+            <p>&nbsp;</p>
+
+        </div>
+
+        <div class="services-center">
+            <h3><a href="@routes.PlanController.plan()">Jai perdu mon chat</a></h3>
+
+            <p>
+                Vous avez perdu votre chat ?<br/>
+                Remplissez vite ce <a href="@routes.PlanController.plan()">formulaire</a> pour que les internautes puissent vous aider !
+            </p>
+        </div>
+
+        <div class="services-right">
+            <h3><a href="@routes.PlanController.plan()">Jai trouvé un chat</a></h3>
+
+            <p>
+                Vite ! <br/>
+                <a href="@routes.PlanController.plan()">Signaler</a> le type de chat, et le lieux.Peut être aiderez-vous son propriétaire.
+            </p>
+        </div>
+    </div>
+    <div class="services-list clearfix">
+        <div class="services-left">
+            <h3><a href="@routes.Application.links()">Liens utiles</a></h3>
+
+            <p>
+                Comment contacter la SPA proche de chez vous ? Quels sont les bonnes adresses ?
+                <a href="@routes.Application.links()">En savoir plus...</a>
+            </p>
+        </div>
+        <div class="services-center">
+            <h3><a href="@routes.Application.index()">L'application Android</a></h3>
+
+            <p>
+                Lorem ispum <br/>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+        <div class="services-right">
+            <h3><a href="@routes.Application.contact()">Contact</a></h3>
+
+            <p>
+                Un soucis sur le site ou sur lapplication Android ?<br/>
+                <a href="@routes.Application.contact()">Contactez-moi</a>
+            </p>
+        </div>
+    </div>
+
+</div>
+}

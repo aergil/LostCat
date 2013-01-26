@@ -1,0 +1,98 @@
+@(lostCatForm: Form[Forms.CatLost],lostCatForm2: Form[Forms.CatFound], cats:String, message : String)
+@import helper._
+@main("plan"){
+<div>
+	<div id="map_canvas"></div>
+</div>
+<script type="text/javascript">
+    var cats = eval('@Html(cats)');
+    window.onload = initialize();
+</script>
+
+<div id="sidebar" class="sidebar chatPerdu" >
+		<h1 onclick="AjouterChatPerdu();return false;">J'ai perdu mon chat</h1>
+		@form(action = routes.PlanController.submitFormLostCat(), 'enctype -> "multipart/form-data", 'class -> "cform", 'id -> "cform") {
+		<label>Indiquez une addresse et affiner le lieu en deplaçant le curseur :</label><br /> 
+		<textarea   id="adresse" name="adresse" rows="4" 	onkeyPress="if (event.keyCode == 13) {searchLocation();return false;} " ></textarea>
+		<input type="hidden" id="latlng" name="latlng" ></input>
+		<button onclick="javascript:searchLocation();return false;">Valider</button>
+	    <fieldset>
+	        <legend>Type de chat</legend>
+	        <select name="couleur">
+	            <option value="isabelle">Isabelle</option>
+	            <option value="noire">Noire</option>
+	            <option value="silver">Silver</option>
+	            <option value="roux">roux</option>
+	        </select>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Taille</legend>
+	        <input type="radio" name="taille" id="tailleChaton" value="Chaton" checked="checked"/>
+	        <label for="tailleChaton">Chaton</label>
+	        <br/>
+	        <input type="radio" name="taille" id="tailleAdulte" value="Adulte"/>
+	        <label for="tailleAdulte">Adulte</label>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Nom</legend>
+	        <input type="text" name="nom"/>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Photo</legend>
+	        <input type="file" name="photo"/>
+	    </fieldset>
+	    <button type="submit">Envoyer</button>
+	    }
+</div>
+<div id="sidebar2" class="sidebar chatTrouve" >
+		<h1 onclick="AjouterChatTrouve();return false;">J'ai trouvé un chat</h1>
+		@form(action = routes.PlanController.submitFormFoundCat(), 'enctype -> "multipart/form-data", 'class -> "cform", 'id -> "cform2") {
+		<label>Indiquez une addresse et affiner le lieu en deplaçant le curseur :</label><br /> 
+		<textarea   id="adresse2" name="adresse2" rows="4" onkeyPress="if (event.keyCode == 13) {searchLocation2();return false;} " ></textarea>
+		<input type="hidden" id="latlng2" name="latlng2" ></input>
+		<button onclick="javascript:searchLocation2();return false;">Valider</button>
+	    <fieldset>
+	        <legend>Type de chat</legend>
+	        <select name="couleur2">
+	            <option value="isabelle">Isabelle</option>
+	            <option value="noire">Noire</option>
+	            <option value="silver">Silver</option>
+	            <option value="roux">roux</option>
+	        </select>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Taille</legend>
+	        <input type="radio" name="taille2" id="tailleChaton2" value="Chaton" checked="checked"/>
+	        <label for="tailleChaton2">Chaton</label>
+	        <br/>
+	        <input type="radio" name="taille2" id="tailleAdulte2" value="Adulte"/>
+	        <label for="tailleAdulte">Adulte</label>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Nom</legend>
+	        <input type="text" name="nom2"/>
+	    </fieldset>
+	    <fieldset>
+	        <legend>Photo</legend>
+	        <input type="file" name="photo2"/>
+	    </fieldset>
+	    <button type="submit">Envoyer</button>
+	    }
+</div>
+
+<div id="detailInfoContainerBackground" ></div>
+<div id="detailInfoContainer">
+		<div id="detailInfo">
+		<img onclick="closeDetailInfo();" id="detailInfoClose"   src="@routes.Assets.at("images/close.png")">
+		<div>
+			<img id="diImage" height="150px;" />
+		</div>
+		<div>
+			<h1 id="diTitle"></h1>
+			<label id="diName"></label><br/>
+			<label id="diColor"></label><br/>
+			<label id="diSize"></label><br/>
+		</div>
+		</div>
+</div>
+}
