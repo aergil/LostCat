@@ -5,11 +5,19 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
     val appName         = "LostCat"
-    val appVersion      = "1.0-SNAPSHOT"
+    val appVersion      = "0.0.1-SNAPSHOT"
 
-	val appDependencies = Seq()
-
+	val appDependencies = Seq(
+	    "org.mongolink" % "mongolink" % "0.0.9-SNAPSHOT",
+	    "com.amazonaws" % "aws-java-sdk" % "1.3.27",
+	    "com.google.code.gson" % "gson" % "2.2.2" ,
+	    "cglib" % "cglib-nodep" % "2.2.2"
+	)
+	    
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
-		resolvers ++= Seq()
+		resolvers ++= Seq(
+		    "mongolink" at "http://repository-mongolink.forge.cloudbees.com/snapshot/"
+		  
+		    )
     )
 }
