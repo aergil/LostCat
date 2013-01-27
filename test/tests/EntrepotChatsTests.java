@@ -24,14 +24,14 @@ public class EntrepotChatsTests {
 	@Before
 	public void before() {
 		Entrepots.setEntrepotImage(new FakeEntrepotImage());
-		Entrepots.initialise("LostCatDbTest");
-		Entrepots.chats().reset();
+		// Entrepots.initialise("LostCatDbTest");
+		// Entrepots.chats().reset();
 		Entrepots.start();
 	}
 
 	@After
 	public void after() {
-		Entrepots.chats().reset();
+		// Entrepots.chats().reset();
 		Entrepots.setEntrepotImage(null);
 		Entrepots.flushAndStop();
 	}

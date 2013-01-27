@@ -13,7 +13,7 @@ import com.mongodb.MongoURI;
 
 class EntrepotSessionManager {
 
-	static String dbName = "LostCatDb";
+	static String dbName;
 	private static MongoSession mongoSession;
 	private static MongoSessionManager sessionManager;
 
@@ -23,11 +23,18 @@ class EntrepotSessionManager {
 
 	protected static void Initialize() {
 		MongoURI mongoUri = new MongoURI(System.getenv("MONGOLAB_URI"));
+		// MongoURI mongoUri = new
+		// MongoURI("mongodb://LostCatDbUser:iiyama@ds049467.mongolab.com:49467/heroku_app11314799");
 
 		List<String> strings = Arrays.asList(mongoUri.getHosts().get(0).split(":"));
 		String host = Iterables.getFirst(strings, "");
 		Integer port = Integer.parseInt(Iterables.getLast(strings, ""));
-		String password = mongoUri.getPassword().toString();
+		char[] password2 = mongoUri.getPassword();
+		String password = "";
+		for (char c : password2) {
+			password = password.concat(Character.toString(c));
+		}
+		// String password = password2.toString();
 		String username = mongoUri.getUsername();
 		if (dbName == null) {
 			dbName = mongoUri.getDatabase();
