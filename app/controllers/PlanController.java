@@ -3,6 +3,9 @@ package controllers;
 import models.Chat;
 import models.Statut;
 import models.Repositories.Entrepots;
+
+import org.apache.log4j.BasicConfigurator;
+
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData.FilePart;
@@ -13,6 +16,10 @@ import Forms.CatLost;
 import com.google.gson.Gson;
 
 public class PlanController extends Controller {
+
+	public PlanController() {
+		BasicConfigurator.configure();
+	}
 
 	public static Result plan() {
 		return displayMessage("");
