@@ -29,6 +29,8 @@ class EntrepotSessionManager {
 		Integer port = Integer.parseInt(Iterables.getLast(strings, ""));
 		String password = mongoUri.getPassword().toString();
 		String username = mongoUri.getUsername();
+		if (dbName == null)
+			dbName = mongoUri.getDatabase();
 
 		Settings settings = Settings.defaultInstance().withHost(host).withPort(port).withDbName(dbName).withAuthentication(username, password);
 		ContextBuilder builder = new ContextBuilder("mapping");
