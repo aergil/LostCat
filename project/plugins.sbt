@@ -11,3 +11,6 @@ resolvers += "sonatype releases"  at "https://oss.sonatype.org/content/groups/sc
 
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("play" % "sbt-plugin" % "2.0.4")
+
+
+ 

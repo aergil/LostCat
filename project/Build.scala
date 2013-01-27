@@ -5,7 +5,7 @@ import PlayProject._
 object ApplicationBuild extends Build {
 
     val appName         = "LostCat"
-    val appVersion      = "0.0.1-SNAPSHOT"
+    val appVersion      = "0.1.0"
 
 	val appDependencies = Seq(
 	    "org.mongolink" % "mongolink" % "0.0.9-SNAPSHOT",
@@ -22,4 +22,6 @@ object ApplicationBuild extends Build {
 			"sonatype releases" at "https://oss.sonatype.org/content/groups/scala-tools/"		  
 		    )
     )
+    
+    
 }

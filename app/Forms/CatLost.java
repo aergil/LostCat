@@ -21,8 +21,6 @@ public class CatLost {
 	@MaxLength(value = 128)
 	private String nom;
 
-	@Required
-	@MaxLength(value = 128)
 	private String adresse;
 
 	public String getCouleur() {

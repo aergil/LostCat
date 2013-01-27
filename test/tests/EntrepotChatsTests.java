@@ -10,6 +10,7 @@ import models.Chat;
 import models.Statut;
 import models.Repositories.Entrepots;
 
+import org.apache.log4j.BasicConfigurator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,15 +24,16 @@ public class EntrepotChatsTests {
 
 	@Before
 	public void before() {
+		BasicConfigurator.configure();
 		Entrepots.setEntrepotImage(new FakeEntrepotImage());
-		// Entrepots.initialise("LostCatDbTest");
-		// Entrepots.chats().reset();
+		Entrepots.initialise("LostCatDbTest");
 		Entrepots.start();
+		Entrepots.chats().reset();
 	}
 
 	@After
 	public void after() {
-		// Entrepots.chats().reset();
+		Entrepots.chats().reset();
 		Entrepots.setEntrepotImage(null);
 		Entrepots.flushAndStop();
 	}
