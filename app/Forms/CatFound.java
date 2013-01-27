@@ -7,61 +7,61 @@ public class CatFound {
 
 	@Required
 	@MaxLength(value = 128)
-	private String couleur2;
+	private String couleur;
 
 	@Required
 	@MaxLength(value = 128)
-	private String taille2;
+	private String taille;
 
 	@Required
 	@MaxLength(value = 128)
-	private String latlng2;
+	private String latlng;
 
 	@Required
 	@MaxLength(value = 128)
-	private String nom2;
+	private String nom;
 
 	@Required
 	@MaxLength(value = 128)
-	private String adresse2;
+	private String adresse;
 
-	public String getCouleur2() {
-		return couleur2;
+	public String getCouleur() {
+		return couleur;
 	}
 
-	public void setCouleur2(String couleur) {
-		this.couleur2 = couleur;
+	public void setCouleur(String couleur) {
+		this.couleur = couleur;
 	}
 
-	public String getTaille2() {
-		return taille2;
+	public String getTaille() {
+		return taille;
 	}
 
-	public void setTaille2(String taille2) {
-		this.taille2 = taille2;
+	public void setTaille(String taille) {
+		this.taille = taille;
 	}
 
-	public String getLatlng2() {
-		return latlng2;
+	public String getLatlng() {
+		return latlng;
 	}
 
-	public void setLatlng2(String latlng2) {
-		this.latlng2 = latlng2;
+	public void setLatlng(String latlng) {
+		this.latlng = latlng;
 	}
 
-	public String getNom2() {
-		return nom2;
+	public String getNom() {
+		return nom;
 	}
 
-	public void setNom2(String nom) {
-		this.nom2 = nom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public String getAdresse2() {
-		return adresse2;
+	public String getAdresse() {
+		return adresse;
 	}
 
-	public void setAdresse2(String adresse) {
-		this.adresse2 = adresse;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 }

@@ -3,10 +3,12 @@ package controllers;
 import models.Chat;
 import models.Statut;
 import models.Repositories.Entrepots;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import views.html.foundCat;
+import views.html.lostCat;
+import views.html.plan;
 import Forms.CatFound;
 import Forms.CatLost;
 
@@ -15,21 +17,23 @@ import com.google.gson.Gson;
 public class PlanController extends Controller {
 
 	public static Result plan() {
-		return displayMessage("");
-	}
-
-	public static Result displayMessage(String message) {
 		Entrepots.start();
 		Gson gson = new Gson();
 		String cats = gson.toJson(Entrepots.chats().tous());
-		Form<CatLost> lostCatForm = form(CatLost.class);
-		Form<CatFound> lostCatForm2 = form(CatFound.class);
 		Entrepots.flushAndStop();
 
-		return ok(views.html.plan.render(lostCatForm, lostCatForm2, cats, message));
+		return ok(plan.render(cats));
 	}
 
-	public static Result submitFormLostCat() {
+	public static Result lostCat() {
+		return ok(lostCat.render(form(CatLost.class)));
+	}
+
+	public static Result foundCat() {
+		return ok(foundCat.render(form(CatFound.class)));
+	}
+
+	public static Result addLostCat() {
 		CatLost form = form(CatLost.class).bindFromRequest().get();
 		FilePart picture = request().body().asMultipartFormData().getFile("photo");
 
@@ -39,23 +43,19 @@ public class PlanController extends Controller {
 		Entrepots.chats().ajouter(chat);
 		Entrepots.flushAndStop();
 
-		return redirect(routes.PlanController.displayMessage(form.getNom()));
+		return redirect(routes.PlanController.plan());
 	}
 
-	public static Result submitFormFoundCat() {
+	public static Result addFoundCat() {
 		CatFound form = form(CatFound.class).bindFromRequest().get();
-		FilePart picture = request().body().asMultipartFormData().getFile("photo2");
+		FilePart picture = request().body().asMultipartFormData().getFile("photo");
 
 		Entrepots.start();
-		Chat chat = Chat.créer(form.getNom2(), form.getCouleur2(), form.getTaille2(), form.getLatlng2(), Statut.TROUVE);
+		Chat chat = Chat.créer(form.getNom(), form.getCouleur(), form.getTaille(), form.getLatlng(), Statut.TROUVE);
 		chat.setPhoto(picture.getFile());
 		Entrepots.chats().ajouter(chat);
 		Entrepots.flushAndStop();
 
-		return redirect(routes.PlanController.displayMessage(form.getNom2()));
-	}
-
-	public static Result ajax(String name, String location) {
-		return ok("Here's my server-side data " + name);
+		return redirect(routes.PlanController.plan());
 	}
 }

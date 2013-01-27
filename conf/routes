@@ -4,16 +4,19 @@
 
 # Home page
 GET		/						controllers.PlanController.plan()
-GET     /plan.html				controllers.PlanController.plan()
-GET		/						controllers.PlanController.displayMessage(message :String)
-GET		/ajax					controllers.PlanController.ajax(name:String, location:String)
-POST	/submitFormLostCat		controllers.PlanController.submitFormLostCat()
-POST	/submitFormFoundCat		controllers.PlanController.submitFormFoundCat()
-GET     /index.html             controllers.Application.index()
-GET     /links.html             controllers.Application.links()
-GET     /contact.html           controllers.Application.contact()
+GET     /plan					controllers.PlanController.plan()
+GET		/lostCat				controllers.PlanController.lostCat()
+GET		/foundCat				controllers.PlanController.foundCat()
+POST	/addLostCat				controllers.PlanController.addLostCat()
+POST	/addFoundCat			controllers.PlanController.addFoundCat()
+
+GET     /index  	           controllers.Application.index()
+GET     /links      	       controllers.Application.links()
+GET     /contact        	   controllers.Application.contact()
 
 GET		/errorPage.html				controllers.ErrorController.showError(error:String)
+
+# GET		/ajax					controllers.PlanController.ajax(name:String, location:String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file       	controllers.Assets.at(path="/public", file)

@@ -23,7 +23,16 @@
 #map_canvas {
 	height: 600px;
 	width: 100%;
-	top: -14px;
+}
+
+#map_canvas img, #map_canvas_form img{
+	max-width: none;
+}
+
+#map_canvas_form{
+	height: 380px;
+	width: 940px;
+	margin-bottom : 10px;
 }
 
 .sidebar {
@@ -49,9 +58,6 @@
 }
 
 
-.sidebar h1 {
-	font-size: 120%;
-}
 
 #detailInfoContainer {
 	text-align: center;

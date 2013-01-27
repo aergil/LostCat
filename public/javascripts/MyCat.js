@@ -8,8 +8,15 @@ var newCatMarker;
 var imageUrl = "https://s3-eu-west-1.amazonaws.com/mycat-storage/";
 var CHAT_TROUVE = "TROUVE";
 var CHAT_PERDU = "PERDU";
+var mapId;
 
-function initialize() {
+function initializeAndAddCats(mapIdArg){
+	initialize(mapIdArg) ;
+	//addCats();
+}
+
+function initialize(mapIdArg) {
+	mapId = mapIdArg;
 	geocoder = new google.maps.Geocoder();
 	infowindow = new google.maps.InfoWindow();
 	
@@ -40,7 +47,7 @@ function afficherMap(latitude, longitude){
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		// ROADMAP, SATELLITE, HYBRID,TERRAIN
 		};
-		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		map = new google.maps.Map(document.getElementById(mapId), mapOptions);
 		addCats();
 }
 
@@ -128,15 +135,10 @@ function createNewCatMarker(myLatlng, type) {
 function setAddress() {
 	var positionString ="[" + newCatMarker.position.lat() + "," + newCatMarker.position.lng() + "]";
 	$('#latlng').val(positionString);
-	$('#latlng2').val(positionString);
 }
 
 function searchLocation() {
 	var address = $('#adresse').val();
-	geocoder.geocode({'address' : address},function(results, status){ displayLocation(results, status);}	);
-}
-function searchLocation2() {
-	var address = $('#adresse2').val();
 	geocoder.geocode({'address' : address},function(results, status){ displayLocation(results, status);}	);
 }
 
@@ -168,44 +170,8 @@ function displayInfoWindow(type) {
 				infowindow.setContent(results[1].formatted_address);
 				infowindow.open(map, newCatMarker);
 				
-				if(type == CHAT_PERDU)
-					$("#address").val(results[1].formatted_address);
-				else
-					$("#address2").val(results[1].formatted_address);
+				$("#address").val(results[1].formatted_address);
 	});
-}
-
-function AjouterChatPerdu() {
-	if (ajouterChatTrouveVisible) {
-		$('#sidebar2').animate({height : 10}, 30);
-		ajouterChatTrouveVisible = false;
-	} 
-	
-	if (ajouterChatPerduVisible) {
-		$('#sidebar2').animate({top : 160}, 300);
-		$('#sidebar').animate({height : 10}, 300, OpenInfoBubbles());
-		ajouterChatPerduVisible = false;
-	} else {
-		$('#sidebar2').animate({top : 600}, 300);
-		$('#sidebar').animate({height : 450}, 300, CloseInfosBubblesAndCreateNewMarker(CHAT_PERDU));
-		ajouterChatPerduVisible = true;
-	}
-}
-
-function AjouterChatTrouve() {
-	if (ajouterChatPerduVisible) {
-		$('#sidebar').animate({height : 10}, 300);
-		$('#sidebar2').animate({top : 160}, 300);
-		ajouterChatPerduVisible = false;
-	}
-	
-	if (ajouterChatTrouveVisible) {
-		$('#sidebar2').animate({height : 10}, 300, OpenInfoBubbles());
-		ajouterChatTrouveVisible = false;
-	} else {
-		$('#sidebar2').animate({height : 450}, 300,CloseInfosBubblesAndCreateNewMarker(CHAT_TROUVE));
-		ajouterChatTrouveVisible = true;
-	}
 }
 
 function OpenInfoBubbles() {

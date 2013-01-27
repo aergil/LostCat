@@ -5,45 +5,38 @@
 <html>
 <head>
     <title>@title</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/map.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/bootstrap.js")" ></script>
     <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" ></script>
     <script type="text/javascript" src="@routes.Assets.at("javascripts/MyCat.js")" ></script>
     <script type="text/javascript" src="@routes.Assets.at("javascripts/InfoBubble.js")" ></script>
+
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnODw-2W4Rlrf3FAiBOF_qhsh5dm41jYo&sensor=true&language=fr" ></script>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
 </head>
-<body >
-<div id="intro-bg" class="clearfix">
 
-    <div id="header">
-        <a class="logo" href="@routes.PlanController.plan()" title="MyCat" rel="home"></a>
-        <h1>MyCat<span class="alpha">alpha</span></h1>
-        <ul id="topnav">
-            <li><a @if(title == "plan") {class="big"} href="@routes.PlanController.plan()">Plan</a></li>
-            <li><a @if(title == "links") {class="big"} href="@routes.Application.links()">Liens</a></li>
-            <li><a @if(title == "contact") {class="big"} href="@routes.Application.contact()">Contact</a></li>
-            <li><a @if(title == "index") {class="big"} href="@routes.Application.index()">Index</a></li>
-        </ul>
-    </div>
+<body >
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container" >
+				<a class="brand" href="@routes.PlanController.plan()">Chat perdu<span class="alpha">alpha</span></a>
+				<ul class="nav pull-right">
+		            <li @if(title == "plan") {class="active"}><a  href="@routes.PlanController.plan()">Plan</a></li>
+		            <li @if(title == "links") {class="active"}><a  href="@routes.Application.links()">Liens</a></li>
+		            <li @if(title == "contact") {class="active"}><a  href="@routes.Application.contact()">Contact</a></li>
+		            <li @if(title == "index") {class="active"}><a  href="@routes.Application.index()">Index</a></li>
+				</ul>
+			</div>
+		</div>
+	</div> 
 
     @content
 
-    <div id="footer" class="clearfix">
-        <div class="wrapperSmall clearfix">
-            <p class="footer-left">MyCat</p>
-
-            <p class="footer-nav">
-                <a href="@routes.PlanController.plan()">Plan</a>
-                <a href="@routes.Application.links()">Liens</a>
-                <a href="@routes.Application.contact()">Contact</a>
-                <a href="@routes.Application.index()">Index</a>
-            </p>
-        </div>
-    </div>
-
-</div>
 
 </body>
 </html>
