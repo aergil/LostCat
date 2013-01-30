@@ -1,0 +1,31 @@
+.bubble{
+	position : absolute;
+	zIndex : 1000;
+	//width : 50px;
+	//height : 50px;
+	//background-color : red;
+	padding : 2px;
+	box-shadow: 4px 4px 8px #444;
+}
+
+.bubbleClose{
+	position : absolute;
+	width : 18px;
+	height : 18px;
+	border : 0;
+	z-index : 1001;
+	margin-left : -9px;
+	margin-top : -9px;
+	cursor : pointer;
+}
+
+.bubbleContentContainer{
+	overflow : auto;
+	cursor : default;
+	clear : both;
+	position : relative;
+}
+
+.bubbleArrow{
+	position : relative;
+}

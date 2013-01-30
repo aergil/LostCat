@@ -41,12 +41,16 @@ public class EntrepotChatsTests {
 	@Test
 	public void UnChatPeutEtreSauvegardé() {
 
-		Chat cat = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
+		Chat cat = Chat.créer(nom, Statut.TROUVE);
+		cat.setCouleur(couleur);
+		cat.setTaille(taille);
+		cat.setAdresse(adresse);
 		cat.setPhoto(new File(""));
 		Entrepots.chats().ajouter(cat);
 		Entrepots.flushAndStop();
 		Entrepots.start();
 		List<Chat> cats = Entrepots.chats().tous();
+
 		assertThat(cats.size()).isEqualTo(1);
 		assertThat(get(cats, 0).getNom()).isEqualTo(cat.getNom());
 		assertThat(get(cats, 0).getCouleur()).isEqualTo(cat.getCouleur());
@@ -60,43 +64,38 @@ public class EntrepotChatsTests {
 
 	@Test
 	public void FindAll() {
-		Chat chat1 = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
-		Chat chat2 = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
-		Chat chat3 = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
+		Chat chat1 = Chat.créer(nom, Statut.TROUVE);
+		Chat chat2 = Chat.créer(nom, Statut.TROUVE);
+		Chat chat3 = Chat.créer(nom, Statut.TROUVE);
 		Entrepots.chats().ajouter(chat1);
 		Entrepots.chats().ajouter(chat2);
 		Entrepots.chats().ajouter(chat3);
+
 		List<Chat> chats = Entrepots.chats().tous();
+
 		assertThat(chats.size()).isEqualTo(3);
 	}
 
 	@Test
 	public void UnChatPeutEtreRetrouvéParSonId() {
 
-		Chat cat = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
+		Chat cat = Chat.créer(nom, Statut.TROUVE);
 		String id = cat.getId();
 		Entrepots.chats().ajouter(cat);
 		Chat cat2 = Entrepots.chats().parId(id);
 
 		assertThat(cat2.getId()).isEqualTo(cat.getId());
 		assertThat(cat2.getNom()).isEqualTo(cat.getNom());
-		assertThat(cat2.getCouleur()).isEqualTo(cat.getCouleur());
-		assertThat(cat2.getTaille()).isEqualTo(cat.getTaille());
-		assertThat(cat2.getAdresse()).isEqualTo(cat.getAdresse());
 	}
 
 	@Test
 	public void UnChatPeutEtreTrouvéParCriteria() {
 
-		Chat chat1 = Chat.créer(nom, couleur, taille, adresse, Statut.TROUVE);
+		Chat chat1 = Chat.créer(nom, Statut.TROUVE);
 		Entrepots.chats().ajouter(chat1);
 		Chat chat2 = Entrepots.chats().parNom(nom);
 
 		assertThat(chat2.getId()).isEqualTo(chat1.getId());
 		assertThat(chat2.getNom()).isEqualTo(chat1.getNom());
-		assertThat(chat2.getCouleur()).isEqualTo(chat1.getCouleur());
-		assertThat(chat2.getTaille()).isEqualTo(chat1.getTaille());
-		assertThat(chat2.getAdresse()).isEqualTo(chat1.getAdresse());
-		assertThat(chat2.getStatut()).isEqualTo(Statut.TROUVE);
 	}
 }

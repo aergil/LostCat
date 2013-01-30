@@ -1,43 +1,25 @@
 package Forms;
 
-import play.data.validation.Constraints.MaxLength;
 import play.data.validation.Constraints.Required;
 
 public class CatLost {
 
-	@MaxLength(value = 128)
-	private String couleur;
-
-	@MaxLength(value = 128)
-	private String taille;
-
-	@MaxLength(value = 128)
-	private String latlng;
-
 	@Required
-	@MaxLength(value = 128)
 	private String nom;
 
+	private String couleur;
+	private String taille;
+	private String latlng;
 	private String tatouage;
-
 	private String puce;
-
 	private String race;
-
 	private String sexe;
-
 	private String age;
-
 	private String dateDisparition;
-
 	private String adresse;
-
 	private String proprietaireNomPrenom;
-
 	private String proprietaireEmail;
-
 	private String proprietaireTelephone;
-
 	private String proprietaireAdresse;
 
 	public String getCouleur() {

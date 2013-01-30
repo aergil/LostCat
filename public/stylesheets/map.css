@@ -27,6 +27,12 @@
 
 #map_canvas img, #map_canvas_form img{
 	max-width: none;
+	
+}
+
+#map_canvas label, #map_canvas_form label { 
+  width: auto; 
+  display:inline; 
 }
 
 #map_canvas_form{

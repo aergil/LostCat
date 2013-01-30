@@ -5,8 +5,8 @@
 # Home page
 GET		/						controllers.PlanController.plan()
 GET     /plan					controllers.PlanController.plan()
-GET		/lostCat				controllers.PlanController.lostCat()
-GET		/foundCat				controllers.PlanController.foundCat()
+GET		/lostCat				controllers.PlanController.lostCatForm()
+GET		/foundCat				controllers.PlanController.foundCatForm()
 POST	/addLostCat				controllers.PlanController.addLostCat()
 POST	/addFoundCat			controllers.PlanController.addFoundCat()
 

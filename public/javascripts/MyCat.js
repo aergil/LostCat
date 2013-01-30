@@ -90,23 +90,11 @@ function createInfoBubble(cat){
 	else
 		backgroundColor = "#00aa00";
 	
-	var infoBubble = new InfoBubble({
+	var infoBubble = new Bubble({
 		map : map,
 		content : content,
 		position : myLatlng,
-		shadowStyle : 1,
-		padding : 3,
-		// backgroundColor : '#ffffff',
-		backgroundColor : backgroundColor,
-		borderRadius : 0,
-		arrowSize : 9,
-		borderWidth : 1,
-		borderColor : backgroundColor, // '#0f0f0f',
-		disableAutoPan : true,
-		hideCloseButton : false,
-		arrowPosition : 48,
-		backgroundClassName : 'infoBubble',
-		arrowStyle : 0
+		statut : cat.statut
 	});
 	return infoBubble;
 }

@@ -13,7 +13,7 @@
 	</div>
 </div>
 
-</br>
+<br/>
 
 <div>
 	<div id="map_canvas"></div>
@@ -37,7 +37,7 @@
 </div>
 
 <script type="text/javascript">
-    var cats = eval('@Html(cats)');
+    var cats = JSON.parse('@Html(cats)');
     window.onload = initializeAndAddCats("map_canvas");
 </script>
 
