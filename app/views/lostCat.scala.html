@@ -15,8 +15,8 @@
 		<legend>Mon chat</legend>
 					
 			<label>Lieu où votre chat a disparu</label>
-			<input type="text" id="adresse" name="adresse" class="search-query input-xlarge " placeholder="25 allée des lilas, Bordeaux ..." onkeyPress="if (event.keyCode == 13) {searchLocation();return false;} " >
-			<a class="btn" href="#" onclick="javascript:searchLocation();return false;"><i class="icon-search"></i></a>
+			<input type="text" id="adresse" name="adresse" class="search-query input-xlarge " placeholder="25 allée des lilas, Bordeaux ..." onkeyPress="if (event.keyCode == 13) {searchLocation(20);return false;} " >
+			<a class="btn" href="#" onclick="javascript:searchLocation(20);return false;"><i class="icon-search"></i></a>
 			<span class="help-block"><small>Indiquez une addresse et affiner le lieu en deplaçant le marqueur</small></span>
 			<input type="hidden" id="latlng" name="latlng" >
 		
