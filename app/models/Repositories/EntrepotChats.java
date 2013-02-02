@@ -16,7 +16,8 @@ public class EntrepotChats {
 	}
 
 	private MongoSession getSession() {
-		return EntrepotSessionManager.getMongoSession();
+		return SessionManager.getInstance().getMongoSession();
+
 	}
 
 	public Chat parNom(String name) {

@@ -20,8 +20,7 @@ public class ChatMapping extends AggregateMap<Chat> {
 		property(element().getStatut());
 		property(element().getTaille());
 		property(element().getImageFileName());
-
-		property(element().getLatlng());
+		property(element().getLatLng());
 		property(element().getTatouage());
 		property(element().getPuce());
 		property(element().getRace());

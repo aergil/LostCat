@@ -9,6 +9,7 @@ GET		/lostCat				controllers.PlanController.lostCatForm()
 GET		/foundCat				controllers.PlanController.foundCatForm()
 POST	/addLostCat				controllers.PlanController.addLostCat()
 POST	/addFoundCat			controllers.PlanController.addFoundCat()
+GET		/detailCat/:id			controllers.PlanController.detailCat(id:String)
 
 GET     /index  	           controllers.Application.index()
 GET     /links      	       controllers.Application.links()

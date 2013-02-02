@@ -9,7 +9,7 @@ import models.Repositories.Entrepots;
 
 import org.junit.Test;
 
-public class EntrepotImagesTests {
+public class EntrepotImagesTest {
 
 	@Test
 	public void peutEnregistrerIcon() {

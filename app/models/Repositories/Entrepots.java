@@ -2,21 +2,6 @@ package models.Repositories;
 
 public class Entrepots {
 
-	private static EntrepotImages entrepotImages;
-	private static EntrepotChats entrepotChats;
-
-	public static void initialise(String name) {
-		EntrepotSessionManager.Initialize(name);
-	}
-
-	public static void start() {
-		EntrepotSessionManager.start();
-	}
-
-	public static void flushAndStop() {
-		EntrepotSessionManager.flushAndStop();
-	}
-
 	public static EntrepotChats chats() {
 		if (entrepotChats == null)
 			entrepotChats = new EntrepotChats();
@@ -31,7 +16,10 @@ public class Entrepots {
 		return entrepotImages;
 	}
 
-	public static void setEntrepotImage(EntrepotImages entrepot) {
+	public static void setEntrepotImages(EntrepotImages entrepot) {
 		entrepotImages = entrepot;
 	}
+
+	private static EntrepotImages entrepotImages;
+	private static EntrepotChats entrepotChats;
 }

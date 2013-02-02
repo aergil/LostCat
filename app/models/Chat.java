@@ -1,6 +1,7 @@
 package models;
 
 import java.io.File;
+import java.util.UUID;
 
 import models.Repositories.Entrepots;
 
@@ -8,7 +9,7 @@ public class Chat {
 
 	public static Chat créer(String nom, Statut perdu) {
 		Chat cat = new Chat();
-		cat.id = ObjectId.getInc();
+		cat.id = UUID.randomUUID().toString();
 		cat.nom = nom;
 		return cat;
 	}
@@ -25,9 +26,8 @@ public class Chat {
 		if (photo == null)
 			return;
 
-		setIconFileName(Entrepots.images().PutCatIcon(id, photo));
-		setImageFileName(Entrepots.images().PutCatImage(id, photo));
-
+		setIconFileName(Entrepots.images().PutCatIcon(id.toString(), photo));
+		setImageFileName(Entrepots.images().PutCatImage(id.toString(), photo));
 	}
 
 	public String getNom() {
@@ -72,10 +72,6 @@ public class Chat {
 
 	public void setIconFileName(String iconFileName) {
 		this.iconFileName = iconFileName;
-	}
-
-	public String getLatlng() {
-		return getLatLng();
 	}
 
 	public String getTatouage() {
@@ -165,7 +161,6 @@ public class Chat {
 	}
 
 	public void setLatLng(String latLng) {
-
 		this.latLng = latLng;
 	}
 

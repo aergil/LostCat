@@ -8,7 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "0.2.0-SNAPSHOT"
 
 	val appDependencies = Seq(
-	    "org.mongolink" % "mongolink" % "0.0.9-SNAPSHOT",
+	    "org.mongolink" % "mongolink" % "0.0.10-SNAPSHOT",
 	    "com.amazonaws" % "aws-java-sdk" % "1.3.27",
 	    "com.google.code.gson" % "gson" % "2.2.2" ,
 	    "cglib" % "cglib-nodep" % "2.2.2",

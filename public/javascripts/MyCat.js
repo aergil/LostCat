@@ -57,13 +57,13 @@ function displayDetailInfo(i) {
 	else
 		$("#diTitle").html("Chat trouvé");
 	
-	$("#diName").html(cats[i].nom);
-	$("#diColor").html(cats[i].couleur);
-	$("#diSize").html(cats[i].taille);
+	$("#diNom").html(cats[i].nom);
+	$("#diDateDisparition").html(cats[i].dateDisparition);
 	$("#diImage").attr("src", imageUrl + cats[i].imageFileName);
+	$("#detailButton").attr('href','detailCat/' + cats[i].id);
 
 	$("#detailInfoContainer").fadeIn('fast');
-	$("#detailInfoContainerBackground").fadeIn('fast');
+	/*$("#detailInfoContainerBackground").fadeIn('fast');*/
 }
 
 function closeDetailInfo() {
@@ -80,7 +80,7 @@ function addCats() {
 }
 
 function createInfoBubble(cat){
-	var coord = eval(cat.adresse);
+	var coord = eval(cat.latLng);
 	var myLatlng = new google.maps.LatLng(coord[0], coord[1]);
 	var content = "<img src='" + imageUrl + cat.iconFileName + "' height='52px' width='52px' onclick='displayDetailInfo(" + i + ");return false;' />";
 
@@ -125,18 +125,20 @@ function setAddress() {
 	$('#latlng').val(positionString);
 }
 
-function searchLocation() {
+function searchLocation(zoom) {
 	var address = $('#adresse').val();
-	geocoder.geocode({'address' : address},function(results, status){ displayLocation(results, status);}	);
+	geocoder.geocode({'address' : address},function(results, status){ displayLocation(results, status, zoom);}	);
 }
 
-function displayLocation(results, status) {
+function displayLocation(results, status, zoom) {
 	if (status != google.maps.GeocoderStatus.OK) {
 		alert('Geocode was not successful for the following reason: ' + status);
 		return;
 	}
 	var location = results[0].geometry.location;
-	map.setZoom(20);
+	if(zoom == 'undefined')
+		zoom = 20;
+	map.setZoom(zoom);
 	map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
 	map.setCenter(location);
 	newCatMarker = createNewCatMarker(location);

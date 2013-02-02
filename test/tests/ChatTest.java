@@ -8,27 +8,29 @@ import java.util.List;
 import models.Chat;
 import models.Statut;
 import models.Repositories.Entrepots;
+import models.Repositories.SessionManager;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+
 import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 
-public class ChatTests {
-
+public class ChatTest {
 	@Before
 	public void before() {
-		Entrepots.setEntrepotImage(new FakeEntrepotImage());
-		Entrepots.initialise("LostCatDbTests");
-		Entrepots.start();
+		Entrepots.setEntrepotImages(new FakeEntrepotImage());
+		SessionManager.setInstance(new FakeSessionManager());
+		SessionManager.getInstance().start();
 	}
 
 	@After
 	public void after() {
-		Entrepots.setEntrepotImage(null);
-		Entrepots.flushAndStop();
+		Entrepots.setEntrepotImages(null);
+		Entrepots.chats().reset();
+		SessionManager.getInstance().flushAndStop();
 	}
 
 	@Test
@@ -46,7 +48,7 @@ public class ChatTests {
 	public void ChatPeutEtreConvertiEnJSON() {
 		Chat chat = Chat.créer("name1", Statut.PERDU);
 		chat.setCouleur("color1");
-		String id = chat.getId();
+		String id = chat.getId().toString();
 		Gson gson = new Gson();
 
 		String chatJson = gson.toJson(chat);
@@ -62,8 +64,8 @@ public class ChatTests {
 
 		Chat chat1 = Chat.créer("name1", Statut.TROUVE);
 		Chat chat2 = Chat.créer("name2", Statut.PERDU);
-		String id1 = chat1.getId();
-		String id2 = chat2.getId();
+		String id1 = chat1.getId().toString();
+		String id2 = chat2.getId().toString();
 
 		List<Chat> chats = Lists.newArrayList(chat1, chat2);
 		Gson gson = new Gson();

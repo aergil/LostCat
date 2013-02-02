@@ -66,59 +66,21 @@
 
 
 #detailInfoContainer {
-	text-align: center;
+	/* text-align: center; */
 	position: absolute;
 	top: 56px;
-	left: 0;
-	width: 100%;
+	/* left: 0; */
+	/* width: 100%; */
 	display: none;
-	padding-top: 200px;
-	overflow: hidden;
+	margin-top: 70px;
+	margin-left : 75px;
+	/* overflow: hidden; */
 }
-
-#detailInfoContainerBackground {
-	position: absolute;
-	top: 56px;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	display: none;
-	background-color: gray;
-	opacity: 0.5;
-	filter: alpha(opacity = 50); /* For IE8 and earlier */
-	overflow: hidden;
+#detailInfoContainer .close{
+	margin-bottom: -20px;
 }
-
-#detailInfo {
-	text-align: left;
-	margin: auto;
-	padding: 20px;
-	width: 400px;
-	height: 200px;
+#detailInfoContainer .thumbnail {
 	background-color: white;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
 	-moz-box-shadow: 3px 3px 3px 3px #888;
 	box-shadow: 3px 3px 3px 3px #888;
-}
-
-#detailInfo div {
-	float: left;
-	margin-left: 10px;
-}
-
-#detailInfo h1 {
-	font-weight: bold;
-}
-
-#detailInfoClose {
-	position: relative;
-	width: 20px;
-	height: 20px;
-	border: 0px;
-	z-index: 101;
-	cursor: pointer;
-	right: 0px;
-	top: 0px;
-	float: right;
 }
