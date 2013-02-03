@@ -1,6 +1,35 @@
 body{
 	padding : 40px;
-	padding-top : 60px;
+	padding-top : 40px;
+	background-image: url('../images/bg.png');
+	/* background-image: url('https://si0.twimg.com/images/themes/theme1/bg.png'); */ 
+	background-position: left 40px;
+	background-attachment: fixed;
+	background-repeat: repeat-x;
+	background-color: #e4eaed;	
+}
+
+.gradient{
+	background-image: linear-gradient(#FFFFF5, #F5F3B4);
+	background-image: -webkit-linear-gradient( #F5F3B4, #FFFFF5);
+	min-height: 100%;
+}
+.mainContent
+{
+	/* background: url('./images/wash-white-30.png'); */
+	background-color : white;
+	padding-bottom: 0;
+	min-height: 100%;
+	padding: 24px 14px;
+	margin: 0 auto;
+	margin-top : 20px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.mainContentPlan{
+	margin-top : 20px;
+	margin-bottom: 15px;
 }
 
 .alpha{

@@ -50,6 +50,7 @@ public class SessionManager {
 	public void flushAndStop() {
 		mongoSession.flush();
 		mongoSession.stop();
+		mongoSession = null;
 	}
 
 	protected MongoSession mongoSession;

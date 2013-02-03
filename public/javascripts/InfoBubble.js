@@ -27,17 +27,16 @@ Bubble.prototype.buildDom_ = function(content, statut) {
   } else{
 	  bubble.className = 'bubble btn btn-success';
   }
-	  
 
-  var close = this.close_ = document.createElement('IMG');
-  close.className = 'bubbleClose';
-  close.src = '/assets/images/close.png';
-
-  var that = this;
-  google.maps.event.addDomListener(close, 'click', function() {
-    that.close();
-    google.maps.event.trigger(that, 'closeclick');
-  });
+//  var close = this.close_ = document.createElement('IMG');
+//  close.className = 'bubbleClose';
+//  close.src = '/assets/images/close.png';
+//
+//  var that = this;
+//  google.maps.event.addDomListener(close, 'click', function() {
+//    that.close();
+//    google.maps.event.trigger(that, 'closeclick');
+//  });
 
   var contentContainer = this.contentContainer_ = document.createElement('DIV');
   contentContainer.className = 'bubbleContentContainer';
@@ -51,7 +50,6 @@ Bubble.prototype.buildDom_ = function(content, statut) {
 
   bubble.style['display'] = 'inline';
 
- // bubble.appendChild(close);
   bubble.appendChild(contentContainer);
   bubble.appendChild(arrow);
 };
@@ -70,10 +68,9 @@ Bubble.prototype['zIndex_changed'] = Bubble.prototype.zIndex_changed;
 
 
 Bubble.prototype.px = function(num) {
-  if (num) {
-    // 0 doesn't need to be wrapped
+  if (num) 
     return num + 'px';
-  }
+  
   return num;
 };
 
@@ -95,31 +92,22 @@ Bubble.prototype.addEvents_ = function() {
 };
 
 
-/**
- * On Adding the Bubble to a map
- * Implementing the OverlayView interface
- */
 Bubble.prototype.onAdd = function() {
   if (!this.bubble_) { this.buildDom_();  }
 
   this.addEvents_();
 
   var panes = this.getPanes();
-  if (panes) {
+  if (panes) 
     panes.floatPane.appendChild(this.bubble_);
-  }
+
 };
 Bubble.prototype['onAdd'] = Bubble.prototype.onAdd;
 
-
-/**
- * Draw the Bubble
- * Implementing the OverlayView interface
- */
 Bubble.prototype.draw = function() {
   var projection = this.getProjection();
 
-  if (!projection) { return;  }
+  if (!projection) { return; }
 
   var latLng = (this.get('position'));
 
@@ -155,28 +143,14 @@ Bubble.prototype.close = function() {
 Bubble.prototype['close'] = Bubble.prototype.close;
 
 
-/**
- * Open the Bubble (asynchronous).
- *
- * @param {google.maps.Map=} opt_map Optional map to open on.
- * @param {google.maps.MVCObject=} opt_anchor Optional anchor to position at.
- */
 Bubble.prototype.open = function(opt_map, opt_anchor) {
   var that = this;
   window.setTimeout(function() {    that.open_(opt_map, opt_anchor);  }, 0);
 };
 
-/**
- * Open the Bubble
- * @private
- * @param {google.maps.Map=} opt_map Optional map to open on.
- * @param {google.maps.MVCObject=} opt_anchor Optional anchor to position at.
- */
 Bubble.prototype.open_ = function(opt_map, opt_anchor) {
-  //this.updateContent_();
-  if (opt_map) {
+  if (opt_map)
     this.setMap(opt_map);
-  }
 
   if (opt_anchor) {
     this.set('anchor', opt_anchor);
@@ -192,33 +166,9 @@ Bubble.prototype.open_ = function(opt_map, opt_anchor) {
 };
 Bubble.prototype['open'] = Bubble.prototype.open;
 
-
-/**
- * Set the position of the Bubble
- *
- * @param {google.maps.LatLng} position The position to set.
- */
-Bubble.prototype.setPosition = function(position) {
-  if (position) {
-    this.set('position', position);
-  }
-};
+Bubble.prototype.setPosition = function(position) {if (position){ this.set('position', position); }};
 Bubble.prototype['setPosition'] = Bubble.prototype.setPosition;
-
-
 Bubble.prototype.getPosition = function() {  return (this.get('position'));};
 Bubble.prototype['getPosition'] = Bubble.prototype.getPosition;
 
-Bubble.prototype.position_changed = function() { this.draw();};
-Bubble.prototype['position_changed'] = Bubble.prototype.position_changed;
-
-
-/**
- * Redraw the Bubble
- * @private
- */
-Bubble.prototype.redraw_ = function() {
-  //this.figureOutSize_();
-  //this.positionCloseButton_();
-  this.draw();
-};
+Bubble.prototype.redraw_ = function() {  this.draw();};

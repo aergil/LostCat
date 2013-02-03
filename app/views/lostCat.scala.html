@@ -5,23 +5,27 @@
     window.onload = initialize("map_canvas_form");
 </script>
 
-<div class="container">
+<div class="container mainContent">
 	<h2>J'ai perdu mon chat</h2>
 	<p class="lead">Veuillez remplir le formulaire suivant pour signaler la disparition de votre chat, et le faire apparaitre dans le plan.</p>
 	
 	@form(action = routes.PlanController.addLostCat(), 'enctype -> "multipart/form-data", 'class -> "form-horizontal", 'id -> "cform") {
-		
 		<fieldset>	
 		<legend>Mon chat</legend>
 					
 			<label>Lieu où votre chat a disparu</label>
 			<input type="text" id="adresse" name="adresse" class="search-query input-xlarge " placeholder="25 allée des lilas, Bordeaux ..." onkeyPress="if (event.keyCode == 13) {searchLocation(20);return false;} " >
-			<a class="btn" href="#" onclick="javascript:searchLocation(20);return false;"><i class="icon-search"></i></a>
-			<span class="help-block"><small>Indiquez une addresse et affiner le lieu en deplaçant le marqueur</small></span>
+			<a class="btn fade in" href="#" onclick="javascript:searchLocation(20);return false;"><i class="icon-search"></i></a>
+			<div class="muted"><small>Indiquez une addresse et affiner le lieu en deplaçant le marqueur</small></div>
+			<div id="alertNoPlace" class="alert" style="display : none;" >
+            	<button type="button" class="close" onclick="alertUnknownLocation();" >×</button>
+            	<strong>Aie !</strong> Ce lieu n'est pas connu.
+          	</div>
 			<input type="hidden" id="latlng" name="latlng" >
 		
 		
 			<div id="map_canvas_form" class="map_form"></div>
+
 
 			<div class="container formulaire">
 				<div class="row">
@@ -66,7 +70,6 @@
 		
 		<fieldset>	
 		<legend>Contacts</legend>
-		
 			<div class="container formulaire">
 				<div class="row">
 					<div class="span4">	
@@ -86,7 +89,6 @@
 			<label>Adresse</label>
 			<span class="help-block"><small>(Si différente du lieu de la disparition)</small></span>
 			<textarea type="text" id="proprietaireAdresse" name="proprietaireAdresse" placeholder="29 rue de la paix, 33800 Bordeaux ..." ></textarea>
-
 		</fieldset>
 		
 		<div class="row">

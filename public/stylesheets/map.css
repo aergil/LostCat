@@ -1,6 +1,3 @@
-.infoBubble {
-	
-}
 
 .infoBubble div {
 	display: none;
@@ -23,64 +20,42 @@
 #map_canvas {
 	height: 600px;
 	width: 100%;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border : 1px solid white;
 }
 
 #map_canvas img, #map_canvas_form img{
 	max-width: none;
-	
 }
 
 #map_canvas label, #map_canvas_form label { 
-  width: auto; 
-  display:inline; 
+  	width: auto; 
+  	display:inline; 
 }
 
 #map_canvas_form{
 	height: 380px;
-	width: 940px;
+	width: 100%;
 	margin-bottom : 10px;
 }
 
-.sidebar {
-	height: 10px;
-	width: 200px;
-	padding: 15px;
-	padding-top: 5px;
-	position: absolute;
-	overflow: hidden;
-	background-color: white;
-	right: 7px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	-moz-box-shadow: 3px 3px 3px 3px #888;
-	box-shadow: 3px 3px 3px 3px #888;
-}
-
-.chatPerdu{
-	top: 120px;
-}
-.chatTrouve{
-	top: 160px;
-}
-
-
-
 #detailInfoContainer {
-	/* text-align: center; */
 	position: absolute;
 	top: 56px;
-	/* left: 0; */
-	/* width: 100%; */
 	display: none;
 	margin-top: 70px;
 	margin-left : 75px;
-	/* overflow: hidden; */
 }
+
 #detailInfoContainer .close{
+	background: url('../images/wash-white-90.png');
 	margin-bottom: -20px;
+	width: 20px;
 }
+
 #detailInfoContainer .thumbnail {
 	background-color: white;
-	-moz-box-shadow: 3px 3px 3px 3px #888;
-	box-shadow: 3px 3px 3px 3px #888;
+	-moz-box-shadow: 5px 5px 10px 1px #888;
+	box-shadow: 5px 5px 10px 1px #888;
 }
