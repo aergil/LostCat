@@ -35,6 +35,7 @@ public class FreemarkerViewProcessor implements ViewProcessor<String> {
 			configuration.setLocale(java.util.Locale.FRANCE);
 			configuration.setNumberFormat("0.####");
 			configuration.setEncoding(java.util.Locale.FRANCE, "utf-8");
+			configuration.setOutputEncoding("utf-8");
 			configuration.setObjectWrapper(ObjectWrapper.BEANS_WRAPPER);
 			String basePath = (String) resourceConfig.getProperties().get(FREEMARKER_TEMPLATES_BASE_PATH);
 			configuration.setDirectoryForTemplateLoading(new File(basePath));
