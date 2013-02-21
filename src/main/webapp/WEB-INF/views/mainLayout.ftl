@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>${title}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
     <link rel="stylesheet" media="screen" href="/public/stylesheets/bootstrap.css">
     <link rel="stylesheet" media="screen" href="/public/stylesheets/main.css">
     <link rel="stylesheet" media="screen" href="/public/stylesheets/map.css">
