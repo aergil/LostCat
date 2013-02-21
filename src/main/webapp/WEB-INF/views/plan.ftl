@@ -45,5 +45,4 @@
     window.onload = initialize("map_canvas", addCats);
 </script>
 
-
 </@layout.mainLayout>
