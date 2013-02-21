@@ -11,6 +11,10 @@
 			<param-value>org.lostcat.resources</param-value>
 		</init-param>
 		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
 			<param-name>com.sun.jersey.config.property.WebPageContentRegex</param-name>
 			<param-value>/public/.*</param-value>
 		</init-param>
