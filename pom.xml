@@ -10,6 +10,7 @@
 
 	<properties>
 		<jettyVersion>8.1.8.v20121106</jettyVersion>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<repositories>
@@ -94,14 +95,12 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
+				<version>3.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.9.v20130131</version>
 				<configuration>
 					<scanIntervalSeconds>1</scanIntervalSeconds>
 					<reload>automatic</reload>
