@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT target/*.war -Dfile.encoding=UTF-8
+web:    java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port $PORT target/*.war -encoding UTF-8
